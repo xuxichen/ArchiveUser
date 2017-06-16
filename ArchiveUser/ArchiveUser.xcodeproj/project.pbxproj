@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		DF18F7B81EF25F36001F931E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7B71EF25F36001F931E /* AppDelegate.m */; };
 		DF18F7BB1EF25F36001F931E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7BA1EF25F36001F931E /* main.m */; };
-		DF18F7BE1EF25F36001F931E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7BD1EF25F36001F931E /* ViewController.m */; };
 		DF18F7C01EF25F36001F931E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7BF1EF25F36001F931E /* Assets.xcassets */; };
 		DF18F7C31EF25F36001F931E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7C11EF25F36001F931E /* Main.storyboard */; };
 		DF18F7CE1EF25F36001F931E /* ArchiveUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7CD1EF25F36001F931E /* ArchiveUserTests.m */; };
 		DF18F7D91EF25F36001F931E /* ArchiveUserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7D81EF25F36001F931E /* ArchiveUserUITests.m */; };
+		DF18F7EB1EF26091001F931E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7E81EF26091001F931E /* ViewController.m */; };
+		DF18F7EE1EF26151001F931E /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7ED1EF26151001F931E /* Model.m */; };
+		DF18F7F11EF2620D001F931E /* ReactPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DF18F7F01EF2620D001F931E /* ReactPathControl.m */; };
+		DF18F7F81EF26668001F931E /* 7z.so in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F41EF26668001F931E /* 7z.so */; };
+		DF18F7F91EF26668001F931E /* keka7z in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F51EF26668001F931E /* keka7z */; };
+		DF18F7FA1EF26668001F931E /* kekaunace in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F61EF26668001F931E /* kekaunace */; };
+		DF18F7FB1EF26668001F931E /* kekaunrar in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F71EF26668001F931E /* kekaunrar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +44,6 @@
 		DF18F7B61EF25F36001F931E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DF18F7B71EF25F36001F931E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DF18F7BA1EF25F36001F931E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DF18F7BC1EF25F36001F931E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DF18F7BD1EF25F36001F931E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DF18F7BF1EF25F36001F931E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF18F7C21EF25F36001F931E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF18F7C41EF25F36001F931E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +53,16 @@
 		DF18F7D41EF25F36001F931E /* ArchiveUserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArchiveUserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF18F7D81EF25F36001F931E /* ArchiveUserUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArchiveUserUITests.m; sourceTree = "<group>"; };
 		DF18F7DA1EF25F36001F931E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF18F7E71EF26091001F931E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DF18F7E81EF26091001F931E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DF18F7EC1EF26151001F931E /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		DF18F7ED1EF26151001F931E /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		DF18F7EF1EF2620D001F931E /* ReactPathControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactPathControl.h; sourceTree = "<group>"; };
+		DF18F7F01EF2620D001F931E /* ReactPathControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactPathControl.m; sourceTree = "<group>"; };
+		DF18F7F41EF26668001F931E /* 7z.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = 7z.so; sourceTree = "<group>"; };
+		DF18F7F51EF26668001F931E /* keka7z */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = keka7z; sourceTree = "<group>"; };
+		DF18F7F61EF26668001F931E /* kekaunace */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o"; path = kekaunace; sourceTree = "<group>"; };
+		DF18F7F71EF26668001F931E /* kekaunrar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = kekaunrar; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +115,10 @@
 			children = (
 				DF18F7B61EF25F36001F931E /* AppDelegate.h */,
 				DF18F7B71EF25F36001F931E /* AppDelegate.m */,
-				DF18F7BC1EF25F36001F931E /* ViewController.h */,
-				DF18F7BD1EF25F36001F931E /* ViewController.m */,
+				DF18F7E61EF26091001F931E /* Controller */,
+				DF18F7E91EF26091001F931E /* Model */,
+				DF18F7EA1EF26091001F931E /* View */,
+				DF18F7F21EF262E0001F931E /* Tools */,
 				DF18F7BF1EF25F36001F931E /* Assets.xcassets */,
 				DF18F7C11EF25F36001F931E /* Main.storyboard */,
 				DF18F7C41EF25F36001F931E /* Info.plist */,
@@ -135,6 +151,52 @@
 				DF18F7DA1EF25F36001F931E /* Info.plist */,
 			);
 			path = ArchiveUserUITests;
+			sourceTree = "<group>";
+		};
+		DF18F7E61EF26091001F931E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF18F7E71EF26091001F931E /* ViewController.h */,
+				DF18F7E81EF26091001F931E /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF18F7E91EF26091001F931E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF18F7EC1EF26151001F931E /* Model.h */,
+				DF18F7ED1EF26151001F931E /* Model.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF18F7EA1EF26091001F931E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF18F7EF1EF2620D001F931E /* ReactPathControl.h */,
+				DF18F7F01EF2620D001F931E /* ReactPathControl.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF18F7F21EF262E0001F931E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DF18F7F31EF26668001F931E /* Bin */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		DF18F7F31EF26668001F931E /* Bin */ = {
+			isa = PBXGroup;
+			children = (
+				DF18F7F41EF26668001F931E /* 7z.so */,
+				DF18F7F51EF26668001F931E /* keka7z */,
+				DF18F7F61EF26668001F931E /* kekaunace */,
+				DF18F7F71EF26668001F931E /* kekaunrar */,
+			);
+			path = Bin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +305,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF18F7FA1EF26668001F931E /* kekaunace in Resources */,
+				DF18F7FB1EF26668001F931E /* kekaunrar in Resources */,
+				DF18F7F81EF26668001F931E /* 7z.so in Resources */,
 				DF18F7C01EF25F36001F931E /* Assets.xcassets in Resources */,
 				DF18F7C31EF25F36001F931E /* Main.storyboard in Resources */,
+				DF18F7F91EF26668001F931E /* keka7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,9 +335,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF18F7BE1EF25F36001F931E /* ViewController.m in Sources */,
 				DF18F7BB1EF25F36001F931E /* main.m in Sources */,
+				DF18F7EB1EF26091001F931E /* ViewController.m in Sources */,
+				DF18F7F11EF2620D001F931E /* ReactPathControl.m in Sources */,
 				DF18F7B81EF25F36001F931E /* AppDelegate.m in Sources */,
+				DF18F7EE1EF26151001F931E /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +568,7 @@
 				DF18F7DF1EF25F36001F931E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF18F7E01EF25F36001F931E /* Build configuration list for PBXNativeTarget "ArchiveUserTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +577,7 @@
 				DF18F7E21EF25F36001F931E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF18F7E31EF25F36001F931E /* Build configuration list for PBXNativeTarget "ArchiveUserUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +586,7 @@
 				DF18F7E51EF25F36001F931E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
