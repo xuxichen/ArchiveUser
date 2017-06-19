@@ -22,7 +22,12 @@
     }
     return _directoryItems;
 }
-
+- (NSMutableArray *)filePathArray {
+    if (!_filePathArray) {
+        _filePathArray = [NSMutableArray array];
+    }
+    return _filePathArray;
+}
 - (void)initializeSystemSettings {
     
     NSMutableDictionary *prefsDict = [self getArchiveUserPreferences];
@@ -96,11 +101,14 @@
 }
 
 - (void)doubleClickAction:(id)sender {
+    
     Model *model = self.directoryItems[self.tableView.selectedRow];
     if (model.isFolder == YES) {
         [self getDirectoryItems:model.url];
         self.currentPath.URL = model.url;
         [self savePathControlURL:self.currentPath.URL];
+        [self.compressBtn setEnabled:NO];
+        [self.unCompressBtn setEnabled:NO];
         [self.tableView reloadData];
     }else {
         [[NSWorkspace sharedWorkspace] openURL:model.url];
@@ -182,22 +190,25 @@
 //鼠标左键选中调用单元格
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSIndexSet *set = self.tableView.selectedRowIndexes;
-    __block BOOL hiddenButton = YES;
+    [self.compressBtn setEnabled:YES];
+    __block BOOL hiddenButton = NO;
     [set enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * _Nonnull stop) {
         Model *model = self.directoryItems[idx];
         [self.filePathArray addObject:model.url];
         NSString *extdrop = [[model.url pathExtension] lowercaseString];
         if (([extdrop isEqual:@"7z"]) || ([extdrop isEqual:@"001"]) || ([extdrop isEqual:@"r00"]) || ([extdrop isEqual:@"c00"]) || ([extdrop isEqual:@"zip"]) || ([extdrop isEqual:@"tar"]) || ([extdrop isEqual:@"gz"]) || ([extdrop isEqual:@"tgz"]) || ([extdrop isEqual:@"bz2"]) || ([extdrop isEqual:@"tbz2"]) || ([extdrop isEqual:@"tbz"]) || ([extdrop isEqual:@"cpgz"]) || ([extdrop isEqual:@"cpio"]) || ([extdrop isEqual:@"cab"]) || ([extdrop isEqual:@"rar"]) || ([extdrop isEqual:@"ace"]) || ([extdrop isEqual:@"lzma"]) || ([extdrop isEqual:@"pax"]) || ([extdrop isEqual:@"xz"])) {
-            hiddenButton = NO;
+            hiddenButton = YES;
         }
     }];
     //此处先用隐藏模式来做，后期完善用按钮变灰不可点击来做。
-    self.unCompressBtn.hidden = hiddenButton;
+    [self.unCompressBtn setEnabled:hiddenButton];
 }
 
 #pragma mark -- NSPathControlClickDelegate 代理协议方法实现
 - (void)reactPathCompantCellDelegate:(ReactPathControl *)pathControl {
-    self.unCompressBtn.hidden = YES;
+    [self.compressBtn setEnabled:NO];
+    [self.unCompressBtn setEnabled:NO];
+    
     NSURL *clickedURL = [self.currentPath.clickedPathComponentCell URL];
     self.currentPath.URL = clickedURL;
     [self getDirectoryItems:clickedURL];
@@ -219,8 +230,40 @@
 
 #pragma makr -- 首页点击事件方法
 - (IBAction)archieve:(NSButton *)sender {
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    if (self.filePathArray.count > 1) {
+        [panel setNameFieldStringValue:@"Archive"];
+    }else {
+        NSString *fileName = [[[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingPathExtension] lastPathComponent];
+        [panel setNameFieldStringValue:fileName];
+    }
+//    [panel setDirectoryURL:[NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"]]];//设置默认打开路径
+    [panel setAllowsOtherFileTypes:YES];
+//    [panel setAllowedFileTypes:[NSArray arrayWithObjects:@"rar",@"zip",@"7z",@"tbz2",@"tgz",@"tar",@"lzma", nil]];
+    [panel setExtensionHidden:YES];
+    [panel setCanCreateDirectories:YES];
+    [panel setAccessoryView:self.tabView];
+    [panel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            NSString *path = [[panel URL] path];
+            
+        }
+    }];
 }
-
 - (IBAction)unArchieve:(NSButton *)sender {
 }
+
+
+
+//
+- (IBAction)segmentation:(NSButton *)sender {
+    self.segmentationView.hidden = !sender.state;
+}
+
+- (IBAction)passwordSelect:(NSButton *)sender {
+
+    self.passwordView.hidden = !sender.state;
+}
+
+
 @end
