@@ -49,6 +49,16 @@
 @property (weak) IBOutlet NSButton *excludeMacForks;
 @property (weak) IBOutlet NSButton *openSavePath;
 
+//progressWindow
+@property (weak) IBOutlet NSWindow *progressWindow;
+@property (weak) IBOutlet NSProgressIndicator *progressViewIndicator;
+@property (weak) IBOutlet NSImageView *progressIcon;
+@property (weak) IBOutlet NSTextField *progressStatusText;
+@property (weak) IBOutlet NSTextField *progressTimerStatusText;
+
+//Password Panel
+@property (weak) IBOutlet NSSecureTextField *passwordToExtract;
+@property (weak) IBOutlet NSTextField *passwordNeedAdvice;
 
 
 //首页压缩解压点击事件方法
@@ -58,6 +68,17 @@
 //tabView方法
 - (IBAction)segmentation:(NSButton *)sender;
 - (IBAction)passwordSelect:(NSButton *)sender;
+
+//压缩方式
+- (IBAction)compressType:(NSButton *)sender;
+
+
+//progressWindow Action
+- (IBAction)pauseProgressWindowAction:(NSButton *)sender;
+- (IBAction)stopProgressWindowAction:(NSButton *)sender;
+
+//Panel Action
+- (IBAction)passwordSend:(NSButton *)sender;
 
 @end
 

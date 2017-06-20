@@ -665,7 +665,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="ArchiveUser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="114" y="240" width="750" height="650"/>
@@ -716,17 +716,17 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGp-pA-uej">
-                                <rect key="frame" x="8" y="553" width="30" height="30"/>
+                                <rect key="frame" x="8" y="558" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="VmO-Qc-cRP"/>
-                                    <constraint firstAttribute="height" constant="30" id="f67-15-hS6"/>
+                                    <constraint firstAttribute="width" constant="25" id="VmO-Qc-cRP"/>
+                                    <constraint firstAttribute="height" constant="25" id="f67-15-hS6"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="route" id="UyC-eR-OAo"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="list" id="UyC-eR-OAo"/>
                             </imageView>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asl-ZJ-05e" customClass="ReactPathControl">
-                                <rect key="frame" x="45" y="552" width="706" height="32"/>
+                                <rect key="frame" x="40" y="558" width="711" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="82G-hn-MlZ"/>
+                                    <constraint firstAttribute="height" constant="25" id="82G-hn-MlZ"/>
                                 </constraints>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" pathStyle="navigationBar" id="7TB-HF-bBA">
                                     <font key="font" metaFont="system"/>
@@ -734,13 +734,13 @@
                                 </pathCell>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-JG-L0L">
-                                <rect key="frame" x="0.0" y="25" width="750" height="520"/>
+                                <rect key="frame" x="0.0" y="25" width="750" height="526"/>
                                 <clipView key="contentView" id="7fU-Bo-Mlz">
-                                    <rect key="frame" x="1" y="0.0" width="748" height="519"/>
+                                    <rect key="frame" x="1" y="0.0" width="748" height="525"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="hVP-X2-q7l" viewBased="YES" id="JMG-cD-lr0">
-                                            <rect key="frame" x="0.0" y="0.0" width="748" height="496"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="748" height="502"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -943,8 +943,15 @@
                         <outlet property="fileNumberLabel" destination="3HB-bq-VBC" id="JE3-1h-rA5"/>
                         <outlet property="gzipSelectbtn" destination="wWR-70-I5v" id="Syw-HC-UUh"/>
                         <outlet property="openSavePath" destination="41O-DQ-E4W" id="n81-k9-dl3"/>
+                        <outlet property="passwordNeedAdvice" destination="sq0-y3-S3G" id="QlB-Kd-fi7"/>
                         <outlet property="passwordTextField" destination="DX6-Td-DIu" id="Lhb-Jh-dzf"/>
+                        <outlet property="passwordToExtract" destination="Lsw-QK-d6v" id="CwV-aU-U9C"/>
                         <outlet property="passwordView" destination="E7x-nG-Eyi" id="JOB-7X-m2Z"/>
+                        <outlet property="progressIcon" destination="rMc-Rw-23p" id="S1X-H7-K2g"/>
+                        <outlet property="progressStatusText" destination="yzZ-s0-oJ3" id="Xr5-9z-nrG"/>
+                        <outlet property="progressTimerStatusText" destination="62f-kp-n72" id="fR5-cH-bpV"/>
+                        <outlet property="progressViewIndicator" destination="kql-zf-ih0" id="8ZN-FE-FND"/>
+                        <outlet property="progressWindow" destination="4gf-JF-bxA" id="mWe-Q0-JRd"/>
                         <outlet property="rarSelectbtn" destination="g88-f1-Zzy" id="u50-7f-sfi"/>
                         <outlet property="segmentationText" destination="fC3-yW-mnY" id="29Q-eA-hjx"/>
                         <outlet property="segmentationType" destination="h13-D5-Ldg" id="qkZ-bR-bQY"/>
@@ -979,53 +986,71 @@
                                                     <rect key="frame" x="1" y="1" width="538" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-cc-br4">
+                                                        <button fixedFrame="YES" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-cc-br4">
                                                             <rect key="frame" x="19" y="8" width="38" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="7Z" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1cs-ja-dHh">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="of6-GZ-L1W"/>
+                                                            </connections>
                                                         </button>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh0-pO-ViH">
+                                                        <button fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="Fh0-pO-ViH">
                                                             <rect key="frame" x="86" y="8" width="43" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="ZIP" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="fE1-jS-kFF">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="I7e-kg-7RG"/>
+                                                            </connections>
                                                         </button>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBE-rE-gVg">
+                                                        <button fixedFrame="YES" tag="12" translatesAutoresizingMaskIntoConstraints="NO" id="bBE-rE-gVg">
                                                             <rect key="frame" x="162" y="8" width="47" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="TAR" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5Aa-e9-9VP">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="rU7-Uu-RfX"/>
+                                                            </connections>
                                                         </button>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWR-70-I5v">
+                                                        <button fixedFrame="YES" tag="13" translatesAutoresizingMaskIntoConstraints="NO" id="wWR-70-I5v">
                                                             <rect key="frame" x="242" y="8" width="52" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="GZIP" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="f1J-Ah-GVD">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="Dgk-Gc-Wuc"/>
+                                                            </connections>
                                                         </button>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bM-g1-8gt">
+                                                        <button fixedFrame="YES" tag="14" translatesAutoresizingMaskIntoConstraints="NO" id="0bM-g1-8gt">
                                                             <rect key="frame" x="340" y="8" width="59" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="BZIP2" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rjB-l1-j7r">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="ReB-15-RRW"/>
+                                                            </connections>
                                                         </button>
-                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g88-f1-Zzy">
+                                                        <button fixedFrame="YES" tag="15" translatesAutoresizingMaskIntoConstraints="NO" id="g88-f1-Zzy">
                                                             <rect key="frame" x="435" y="8" width="48" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="radio" title="RAR" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Pac-pE-hA8">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="compressType:" target="XfG-lQ-9wD" id="mqV-6M-2a1"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </view>
@@ -1282,15 +1307,15 @@
                                                     <constraint firstAttribute="height" constant="21" id="mcX-ev-Nji"/>
                                                     <constraint firstAttribute="width" constant="104" id="mtn-zR-8Pp"/>
                                                 </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="储存" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xQ4-dy-UBU" id="ljh-eR-bxY">
+                                                <popUpButtonCell key="cell" type="push" title="储存" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xQ4-dy-UBU" id="ljh-eR-bxY">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" id="Q2Q-Eg-utJ">
                                                         <items>
-                                                            <menuItem title="储存" id="xQ4-dy-UBU"/>
+                                                            <menuItem title="储存" state="on" id="xQ4-dy-UBU"/>
                                                             <menuItem title="最快" id="LeC-9o-rSg"/>
                                                             <menuItem title="快速" id="rdd-6y-Dym"/>
-                                                            <menuItem title="正常" state="on" id="bIj-qg-nyX"/>
+                                                            <menuItem title="正常" id="bIj-qg-nyX"/>
                                                             <menuItem title="最大" id="WyC-xL-a6i"/>
                                                             <menuItem title="极限" id="Ssm-qE-3az"/>
                                                         </items>
@@ -1333,16 +1358,152 @@
                         <constraint firstItem="jon-VI-IaL" firstAttribute="leading" secondItem="Slh-X7-pp9" secondAttribute="leading" id="l9W-PH-aqT"/>
                     </constraints>
                 </customView>
+                <window title="ArchiveUser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="4gf-JF-bxA" userLabel="Window (ArchiveUser)">
+                    <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" texturedBackground="YES"/>
+                    <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+                    <rect key="contentRect" x="76" y="788" width="399" height="68"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    <view key="contentView" id="uDQ-6d-uCs">
+                        <rect key="frame" x="0.0" y="0.0" width="399" height="68"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator verticalHuggingPriority="750" fixedFrame="YES" minValue="20" maxValue="100" doubleValue="20" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="kql-zf-ih0">
+                                <rect key="frame" x="53" y="31" width="298" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMc-Rw-23p">
+                                <rect key="frame" x="13" y="25" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="DAt-mb-ad7"/>
+                            </imageView>
+                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17i-YW-MwD">
+                                <rect key="frame" x="374.5" y="28" width="17" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="cancel" imagePosition="overlaps" alignment="center" alternateImage="cancel_hover" inset="2" id="lz7-Nk-fOt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopProgressWindowAction:" target="XfG-lQ-9wD" id="2br-Mn-Zwa"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-s0-oJ3">
+                                <rect key="frame" x="52" y="50" width="330" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="状态文字" id="5q1-pu-uka">
+                                    <font key="font" size="11" name="LiHeiPro"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62f-kp-n72">
+                                <rect key="frame" x="52" y="11" width="330" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间状态" id="Zn6-WI-DxC">
+                                    <font key="font" size="9" name="LiHeiPro"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-bW-xNh">
+                                <rect key="frame" x="355.5" y="28" width="17" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="pause" imagePosition="overlaps" alignment="center" alternateImage="pause_hover" inset="2" id="b5c-q2-YOj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+IA
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pauseProgressWindowAction:" target="XfG-lQ-9wD" id="2Gf-7B-cHi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </window>
+                <window title="密码" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="vDI-cg-XSY" userLabel="Panel (密码)" customClass="NSPanel">
+                    <windowStyleMask key="styleMask" titled="YES"/>
+                    <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+                    <rect key="contentRect" x="196" y="383" width="355" height="109"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    <view key="contentView" id="cOr-wK-SeL">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="109"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <secureTextField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsw-QK-d6v">
+                                <rect key="frame" x="73.5" y="48" width="207" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="x55-SA-Bg4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                            </secureTextField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slm-Ih-wmQ">
+                                <rect key="frame" x="81" y="12" width="96" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sbt-I9-1ip">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="LiHeiPro"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopProgressWindowAction:" target="XfG-lQ-9wD" id="bK9-wI-fpR"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-Rh-Tcx">
+                                <rect key="frame" x="177" y="12" width="96" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="好" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="79Y-ny-xjn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="LiHeiPro"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="passwordSend:" target="XfG-lQ-9wD" id="4lh-hA-gOj"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq0-y3-S3G">
+                                <rect key="frame" x="17" y="78" width="321" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="解压该压缩文件需要密码：" id="R1L-6x-HKX">
+                                    <font key="font" size="13" name="LiHeiPro"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdT-zi-G9R">
+                                <rect key="frame" x="20" y="38" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="key" id="P0d-Ot-zmW"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </window>
             </objects>
             <point key="canvasLocation" x="64" y="1412"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="cancel" width="14" height="14"/>
+        <image name="cancel_hover" width="14" height="14"/>
         <image name="compress" width="256" height="256"/>
         <image name="cutting" width="200" height="200"/>
+        <image name="key" width="48" height="48"/>
+        <image name="list" width="200" height="200"/>
         <image name="password" width="200" height="200"/>
-        <image name="route" width="1392" height="875"/>
+        <image name="pause" width="14" height="14"/>
+        <image name="pause_hover" width="14" height="14"/>
         <image name="un-compress" width="256" height="256"/>
     </resources>
 </document>

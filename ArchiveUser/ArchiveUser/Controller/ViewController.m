@@ -189,6 +189,7 @@
 #pragma mark ***** Notifications *****
 //鼠标左键选中调用单元格
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    [self.filePathArray removeAllObjects];
     NSIndexSet *set = self.tableView.selectedRowIndexes;
     [self.compressBtn setEnabled:YES];
     __block BOOL hiddenButton = NO;
@@ -237,16 +238,16 @@
         NSString *fileName = [[[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingPathExtension] lastPathComponent];
         [panel setNameFieldStringValue:fileName];
     }
-//    [panel setDirectoryURL:[NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"]]];//设置默认打开路径
+    NSString *defaultSavePath = [[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingLastPathComponent];
+    [panel setDirectoryURL:[NSURL URLWithString:defaultSavePath]];//设置默认打开路径
     [panel setAllowsOtherFileTypes:YES];
-//    [panel setAllowedFileTypes:[NSArray arrayWithObjects:@"rar",@"zip",@"7z",@"tbz2",@"tgz",@"tar",@"lzma", nil]];
     [panel setExtensionHidden:YES];
     [panel setCanCreateDirectories:YES];
     [panel setAccessoryView:self.tabView];
     [panel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
             NSString *path = [[panel URL] path];
-            
+            NSInteger compressType = [self getCompressType];
         }
     }];
 }
@@ -261,9 +262,123 @@
 }
 
 - (IBAction)passwordSelect:(NSButton *)sender {
-
     self.passwordView.hidden = !sender.state;
 }
 
+//压缩相关
+- (void)compressFileArray:(NSArray *)urlArray
+         withSavelocation:(NSString *)saveLocation
+             withPassword:(NSString *)password
+            withz7passwod:(NSString *)z7password
+         withCompressType:(NSInteger)compressType {
+    
+    
+}
+- (NSInteger )getCompressType  {
+    
+    if (self.z7Selectbtn.state) {
+        return 0;
+    }else if (self.zipSelectbtn.state) {
+        return 1;
+    }else if (self.tarSelectbtn.state) {
+        return 2;
+    }else if (self.gzipSelectbtn.state) {
+        return 3;
+    }else if (self.bzip2Selectbtn.state) {
+        return 4;
+    }else if (self.rarSelectbtn.state) {
+        return 5;
+    }else {
+        return 10;
+    }
+}
 
+- (IBAction)compressType:(NSButton *)sender {
+    switch (sender.tag) {
+        case 10:{
+            [self.solidMode setEnabled:YES];
+            [self.z7PasswordHead setEnabled:YES];
+            
+            self.z7Selectbtn.state = NSOnState;
+            self.zipSelectbtn.state = NSOffState;
+            self.tarSelectbtn.state = NSOffState;
+            self.gzipSelectbtn.state = NSOffState;
+            self.bzip2Selectbtn.state = NSOffState;
+            self.rarSelectbtn.state = NSOffState;
+        }
+            break;
+        case 11:{
+            [self.solidMode setEnabled:NO];
+            [self.z7PasswordHead setEnabled:NO];
+            
+            self.z7Selectbtn.state = NSOffState;
+            self.zipSelectbtn.state = NSOnState;
+            self.tarSelectbtn.state = NSOffState;
+            self.gzipSelectbtn.state = NSOffState;
+            self.bzip2Selectbtn.state = NSOffState;
+            self.rarSelectbtn.state = NSOffState;
+        }
+            break;
+        case 12:{
+            [self.solidMode setEnabled:NO];
+            [self.z7PasswordHead setEnabled:NO];
+            
+            self.z7Selectbtn.state = NSOffState;
+            self.zipSelectbtn.state = NSOffState;
+            self.tarSelectbtn.state = NSOnState;
+            self.gzipSelectbtn.state = NSOffState;
+            self.bzip2Selectbtn.state = NSOffState;
+            self.rarSelectbtn.state = NSOffState;
+        }
+            break;
+            
+        case 13:{
+            [self.solidMode setEnabled:NO];
+            [self.z7PasswordHead setEnabled:NO];
+            
+            self.z7Selectbtn.state = NSOffState;
+            self.zipSelectbtn.state = NSOffState;
+            self.tarSelectbtn.state = NSOffState;
+            self.gzipSelectbtn.state = NSOnState;
+            self.bzip2Selectbtn.state = NSOffState;
+            self.rarSelectbtn.state = NSOffState;
+        }
+            break;
+        case 14:{
+            [self.solidMode setEnabled:NO];
+            [self.z7PasswordHead setEnabled:NO];
+            
+            self.z7Selectbtn.state = NSOffState;
+            self.zipSelectbtn.state = NSOffState;
+            self.tarSelectbtn.state = NSOffState;
+            self.gzipSelectbtn.state = NSOffState;
+            self.bzip2Selectbtn.state = NSOnState;
+            self.rarSelectbtn.state = NSOffState;
+        }
+            break;
+        case 15:{
+            [self.solidMode setEnabled:NO];
+            [self.z7PasswordHead setEnabled:NO];
+            
+            self.z7Selectbtn.state = NSOffState;
+            self.zipSelectbtn.state = NSOffState;
+            self.tarSelectbtn.state = NSOffState;
+            self.gzipSelectbtn.state = NSOffState;
+            self.bzip2Selectbtn.state = NSOffState;
+            self.rarSelectbtn.state = NSOnState;
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)pauseProgressWindowAction:(NSButton *)sender {
+}
+
+- (IBAction)stopProgressWindowAction:(NSButton *)sender {
+}
+
+- (IBAction)passwordSend:(NSButton *)sender {
+}
 @end
