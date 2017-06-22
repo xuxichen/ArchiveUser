@@ -98,6 +98,9 @@
     [self getDirectoryItems:self.currentPath.URL];
     self.tableView.doubleAction = @selector(doubleClickAction:);
     self.tableView.allowsMultipleSelection = YES;
+    
+//    // Notification control to check outputs
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sieteReader: ) name:NSFileHandleReadCompletionNotification object:nil];
 }
 
 - (void)doubleClickAction:(id)sender {
@@ -235,7 +238,7 @@
     if (self.filePathArray.count > 1) {
         [panel setNameFieldStringValue:@"Archive"];
     }else {
-        NSString *fileName = [[[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingPathExtension] lastPathComponent];
+        NSString *fileName = [[[[[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingPathExtension] lastPathComponent] stringByRemovingPercentEncoding] stringByAppendingString:@" "];
         [panel setNameFieldStringValue:fileName];
     }
     NSString *defaultSavePath = [[NSString stringWithFormat:@"%@",[self.filePathArray firstObject]] stringByDeletingLastPathComponent];
@@ -246,8 +249,7 @@
     [panel setAccessoryView:self.tabView];
     [panel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
-            NSString *path = [[panel URL] path];
-            NSInteger compressType = [self getCompressType];
+            [self compressFileArray:self.filePathArray withSavelocation:[panel.URL.path stringByRemovingPercentEncoding] withPassword:self.passwordTextField.stringValue withz7passwod:!self.z7PasswordHead.state withCompressType:[self getCompressType]];
         }
     }];
 }
@@ -266,14 +268,6 @@
 }
 
 //压缩相关
-- (void)compressFileArray:(NSArray *)urlArray
-         withSavelocation:(NSString *)saveLocation
-             withPassword:(NSString *)password
-            withz7passwod:(NSString *)z7password
-         withCompressType:(NSInteger)compressType {
-    
-    
-}
 - (NSInteger )getCompressType  {
     
     if (self.z7Selectbtn.state) {
@@ -292,13 +286,266 @@
         return 10;
     }
 }
+- (void)compressFileArray:(NSArray *)urlArray
+         withSavelocation:(NSString *)saveLocation
+             withPassword:(NSString *)password
+            withz7passwod:(BOOL)isZ7Password
+         withCompressType:(NSInteger)compressType {
+    
+    self.progressStatusText.stringValue = @"操作正在进行中......";
+    self.progressTimerStatusText.stringValue = @"等待中......";
+    [self.progressViewIndicator startAnimation:self];
+    
+    [self.progressWindow orderFront:nil];
+    
+    self.archiveTask = [[NSTask alloc] init];
+    self.pipeOut = [[NSPipe alloc] init];
+    [self.archiveTask setStandardOutput:self.pipeOut];
+    self.handleOut = [self.pipeOut fileHandleForReading];
+    [self.handleOut readInBackgroundAndNotify];
+    [self.archiveTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"keka7z" ofType:@""]];
+    
+    // Setting arguments
+    NSMutableArray *compressArgsArray = [NSMutableArray array];
+    [compressArgsArray addObject:@"a"];
+    
+    switch (compressType) {
+        case 0: {
+            _savePathLocationString = [NSString stringWithFormat:@"%@.7z",[saveLocation substringToIndex:saveLocation.length-1]];
+            self.progressStatusText.stringValue = [NSString stringWithFormat:@"创建 7z 文件..."];
+            
+            [compressArgsArray addObject:@"-t7z"];
+            
+            if (!self.segmentationSelectBtn.state || self.segmentationText.stringValue) {
+                NSString *segmenString;
+                switch ([self.segmentationType indexOfSelectedItem] || self.segmentationText.stringValue != NULL) {
+                    case 0:
+                        segmenString = [NSString stringWithFormat:@"-v%@m",self.segmentationText.stringValue];
+                        break;
+                    case 1:
+                        segmenString = [NSString stringWithFormat:@"-v%@kb",self.segmentationText.stringValue];
+                        break;
+                    case 2:
+                        segmenString = [NSString stringWithFormat:@"-v%@g",self.segmentationText.stringValue];
+                        break;
+                    case 3:
+                        segmenString = [NSString stringWithFormat:@"-v%@b",self.segmentationText.stringValue];
+                        break;
+                    default:
+                        break;
+                }
+//                [compressArgsArray addObject:segmenString];
+            }
+            
+            [compressArgsArray addObject:_savePathLocationString];
+            
+            for (int i=0; i<urlArray.count; i++) {
+                [compressArgsArray addObject:[urlArray[i] path]];
+            }
+            
+            NSString *archiveMethodString;
+            switch ([self.archiveaMethod indexOfSelectedItem]) {
+                case 0: //STORE
+                    archiveMethodString = @"-mx0";
+                    break;
+                case 1: //FASTEST
+                    archiveMethodString = @"-mx1";
+                    break;
+                case 2: //FAST
+                    archiveMethodString = @"-mx3";
+                    break;
+                case 3: //NORMAL
+                    archiveMethodString = @"-mx5";
+                    break;
+                case 4: //MAXIMUM
+                    archiveMethodString = @"-mx7";
+                    break;
+                case 5: //ULTRA
+                    archiveMethodString = @"-mx9";
+                    break;
+            }
+            [compressArgsArray addObject:archiveMethodString];
+            
+            if (self.solidMode.enabled || !self.solidMode.state) {
+                [compressArgsArray addObject:@"-ms=on"];
+            }else {
+                [compressArgsArray addObject:@""];
+            }
+            
+            password = [@"-p" stringByAppendingString:password];
+            if ([password isEqualToString:@"-p"]) {
+                password = @"";
+            }
+            [compressArgsArray addObject:password];
+            
+            if (isZ7Password) {
+                [compressArgsArray addObject:@""];
+            }else {
+                [compressArgsArray addObject:@"-mhe"];
+            }
+            
+            if (self.excludeMacForks.state) {
+                [compressArgsArray addObject:@"-xr!.DS_Store"];
+                [compressArgsArray addObject:@"-xr!.localized"];
+                [compressArgsArray addObject:@"-xr!._*"];
+                [compressArgsArray addObject:@"-xr!.FBC*"];
+                [compressArgsArray addObject:@"-xr!.Spotlight-V100"];
+                [compressArgsArray addObject:@"-xr!.Trash"];
+                [compressArgsArray addObject:@"-xr!.Trashes"];
+                [compressArgsArray addObject:@"-xr!.background"];
+                [compressArgsArray addObject:@"-xr!.TemporaryItems"];
+                [compressArgsArray addObject:@"-xr!.fseventsd"];
+                [compressArgsArray addObject:@"-xr!.com.apple.timemachine.*"];
+                [compressArgsArray addObject:@"-xr!.VolumeIcon.icns"];
+            }
+            
+            [self.archiveTask setArguments:compressArgsArray];
+            NSLog(@"compressArgsArray === %@",compressArgsArray);
+            
+            [self.archiveTask launch];
+            
+            _seconds = 1;
+            _minutes = 0;
+            _hours = 0;
+            
+            self.timeCounterVar = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCounter:) userInfo:nil repeats:YES];
+            self.sieteTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(sietezipProgress:) userInfo:nil repeats:YES];
+        }
+            
+            break;
+        case 1: {
+            saveLocation = [NSString stringWithFormat:@"%@.zip",saveLocation];
+            self.progressStatusText.stringValue = [NSString stringWithFormat:@"创建 zip 文件..."];
+            [compressArgsArray addObject:@"-tzip"];
+        }
+            break;
+        case 2: {
+            saveLocation = [NSString stringWithFormat:@"%@.tar",saveLocation];
+            self.progressStatusText.stringValue = [NSString stringWithFormat:@"创建 tar 文件..."];
+            [compressArgsArray addObject:@"-ttar"];
+        }
+            
+            break;
+        case 3: {
+            saveLocation = [NSString stringWithFormat:@"%@.gz",saveLocation];
+            self.progressStatusText.stringValue = [NSString stringWithFormat:@"创建 gzip 文件..."];
+            [compressArgsArray addObject:@"-tgzip"];
+        }
+            
+            break;
+        case 4: {
+            saveLocation = [NSString stringWithFormat:@"%@.bz2",saveLocation];
+            self.progressStatusText.stringValue = [NSString stringWithFormat:@"创建 bzip2 文件..."];
+            [compressArgsArray addObject:@"-tbzip2"];
+        }
+            
+            break;
+        case 5:
+            
+            break;
+        default:
+            
+            break;
+    }
+    
+}
+
+- (void)timeCounter:(NSTimer *)theTimer {
+    
+    NSString* zeroSec;
+    NSString* zeroMin;
+    if (_seconds == 60) {
+        _minutes = (_minutes + 1);
+        _seconds = 0;
+    }
+    if (_minutes == 60) {
+        _hours = (_hours + 1);
+        _minutes = 0;
+        }
+    if ((_seconds <= 59) && (_minutes == 0) && (_hours == 0)) {
+        [self.progressTimerStatusText setStringValue:[NSString stringWithFormat:@"已消耗时间： %ld 秒",_seconds]];
+        }
+    if ((_minutes > 0) && (_hours == 0)) {
+        if (_seconds < 10) zeroSec = @"0";
+        else zeroSec = @"";
+        [self.progressTimerStatusText setStringValue:[NSString stringWithFormat:@"已消耗时间： %ld:%@%ld 分钟",_minutes,zeroSec,_seconds]];
+    }
+    if (_hours > 0) {
+        if (_seconds < 10) zeroSec = @"0";
+        else zeroSec = @"";
+        if (_minutes < 10) zeroMin = @"0";
+        else zeroMin = @"";
+        [self.progressTimerStatusText setStringValue:[NSString stringWithFormat:@"已消耗时间：  %ld:%@%ld:%@%ld 小时",_hours,zeroMin,_minutes,zeroSec,_seconds]];
+        }
+    _seconds = _seconds + 1;
+}
+
+- (void)sietezipProgress:(NSTimer *)theTimer {
+    
+    if ([self.archiveTask isRunning]) {
+    } else {
+        [self archiveEndProcess];
+    }
+}
+
+- (void)archiveEndProcess {
+    if ([self.sieteTimer isValid]) {
+        [self.sieteTimer invalidate];
+    }
+    if ([self.timeCounterVar isValid]) {
+        [self.timeCounterVar invalidate];
+    }
+    
+    if ([self.archiveTask terminationStatus] == 0) {
+
+        if (self.openSavePath.state == NSOnState) {
+            [[NSWorkspace sharedWorkspace] selectFile:_savePathLocationString inFileViewerRootedAtPath:[_savePathLocationString stringByDeletingLastPathComponent]];
+        }
+    }else {
+        NSLog(@"错误码 %d",[self.archiveTask terminationStatus]);
+    }
+    
+        
+    if ([self.archiveTask terminationStatus] == 0) {
+        [self.progressWindow orderOut:nil];
+    } else {
+        NSImage *icon = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AlertStopIcon.icns"]];
+        [icon setSize:[self.progressIcon frame].size];
+        [self.progressIcon setImage:icon];
+        [self.progressViewIndicator stopAnimation:self];
+        [self.progressViewIndicator setHidden:YES];
+        [self.progressStatusText setStringValue:[NSString stringWithFormat:@"压缩失败",nil]];
+        [self.progressStatusText setTextColor:[NSColor redColor]];
+        [self.progressTimerStatusText setStringValue:[NSString stringWithFormat:@"操作失败错误码 %d",[self.archiveTask terminationStatus]]];
+        [self.progressPauseButton setHidden:YES];
+    }
+        
+        
+}
+// Reading task output
+-(void)sieteReader:(NSNotification *)notification {
+    // Reading output
+    self.dataOut = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+    self.stringOut = [[NSString alloc] initWithData:_dataOut encoding:NSASCIIStringEncoding];
+    
+    if (YES) {
+        if ([_stringOut rangeOfString:@"Enter password"].length > 0) {
+            
+        }
+    }
+    
+    
+    if ([self.archiveTask isRunning])
+        [self.handleOut readInBackgroundAndNotify];
+}
 
 - (IBAction)compressType:(NSButton *)sender {
     switch (sender.tag) {
         case 10:{
-            [self.solidMode setEnabled:YES];
-            [self.z7PasswordHead setEnabled:YES];
-            
+            self.solidMode.enabled = YES;
+            self.z7PasswordHead.enabled = YES;
+            self.passwordSelectBtn.enabled = YES;
+
             self.z7Selectbtn.state = NSOnState;
             self.zipSelectbtn.state = NSOffState;
             self.tarSelectbtn.state = NSOffState;
@@ -308,8 +555,10 @@
         }
             break;
         case 11:{
-            [self.solidMode setEnabled:NO];
-            [self.z7PasswordHead setEnabled:NO];
+            self.solidMode.enabled = NO;
+            self.solidMode.state = NSOffState;
+            self.z7PasswordHead.enabled = NO;
+            self.passwordSelectBtn.enabled = YES;
             
             self.z7Selectbtn.state = NSOffState;
             self.zipSelectbtn.state = NSOnState;
@@ -320,8 +569,12 @@
         }
             break;
         case 12:{
-            [self.solidMode setEnabled:NO];
-            [self.z7PasswordHead setEnabled:NO];
+            self.solidMode.enabled = NO;
+            self.solidMode.state = NSOffState;
+            self.z7PasswordHead.enabled = NO;
+            self.passwordSelectBtn.enabled = NO;
+            self.passwordSelectBtn.state = NSOffState;
+            self.passwordView.hidden = YES;
             
             self.z7Selectbtn.state = NSOffState;
             self.zipSelectbtn.state = NSOffState;
@@ -333,8 +586,12 @@
             break;
             
         case 13:{
-            [self.solidMode setEnabled:NO];
-            [self.z7PasswordHead setEnabled:NO];
+            self.solidMode.enabled = NO;
+            self.solidMode.state = NSOffState;
+            self.z7PasswordHead.enabled = NO;
+            self.passwordSelectBtn.enabled = NO;
+            self.passwordSelectBtn.state = NSOffState;
+            self.passwordView.hidden = YES;
             
             self.z7Selectbtn.state = NSOffState;
             self.zipSelectbtn.state = NSOffState;
@@ -345,8 +602,12 @@
         }
             break;
         case 14:{
-            [self.solidMode setEnabled:NO];
-            [self.z7PasswordHead setEnabled:NO];
+            self.solidMode.enabled = NO;
+            self.solidMode.state = NSOffState;
+            self.z7PasswordHead.enabled = NO;
+            self.passwordSelectBtn.enabled = NO;
+            self.passwordSelectBtn.state = NSOffState;
+            self.passwordView.hidden = YES;
             
             self.z7Selectbtn.state = NSOffState;
             self.zipSelectbtn.state = NSOffState;
@@ -357,8 +618,12 @@
         }
             break;
         case 15:{
-            [self.solidMode setEnabled:NO];
-            [self.z7PasswordHead setEnabled:NO];
+            //rar自成体系另外处理
+            self.solidMode.enabled = NO;
+            self.solidMode.state = NSOffState;
+            self.z7PasswordHead.enabled = NO;
+            self.passwordSelectBtn.enabled = NO;
+            
             
             self.z7Selectbtn.state = NSOffState;
             self.zipSelectbtn.state = NSOffState;
@@ -372,6 +637,10 @@
             break;
     }
 }
+
+- (IBAction)compressMethod:(NSPopUpButton *)sender {
+}
+
 
 - (IBAction)pauseProgressWindowAction:(NSButton *)sender {
 }

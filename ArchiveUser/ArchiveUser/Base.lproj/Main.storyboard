@@ -944,15 +944,18 @@
                         <outlet property="gzipSelectbtn" destination="wWR-70-I5v" id="Syw-HC-UUh"/>
                         <outlet property="openSavePath" destination="41O-DQ-E4W" id="n81-k9-dl3"/>
                         <outlet property="passwordNeedAdvice" destination="sq0-y3-S3G" id="QlB-Kd-fi7"/>
+                        <outlet property="passwordSelectBtn" destination="ZCX-5b-EzQ" id="wDX-0S-DCO"/>
                         <outlet property="passwordTextField" destination="DX6-Td-DIu" id="Lhb-Jh-dzf"/>
                         <outlet property="passwordToExtract" destination="Lsw-QK-d6v" id="CwV-aU-U9C"/>
                         <outlet property="passwordView" destination="E7x-nG-Eyi" id="JOB-7X-m2Z"/>
                         <outlet property="progressIcon" destination="rMc-Rw-23p" id="S1X-H7-K2g"/>
+                        <outlet property="progressPauseButton" destination="oBs-bW-xNh" id="kx5-bc-bLV"/>
                         <outlet property="progressStatusText" destination="yzZ-s0-oJ3" id="Xr5-9z-nrG"/>
                         <outlet property="progressTimerStatusText" destination="62f-kp-n72" id="fR5-cH-bpV"/>
                         <outlet property="progressViewIndicator" destination="kql-zf-ih0" id="8ZN-FE-FND"/>
                         <outlet property="progressWindow" destination="4gf-JF-bxA" id="mWe-Q0-JRd"/>
                         <outlet property="rarSelectbtn" destination="g88-f1-Zzy" id="u50-7f-sfi"/>
+                        <outlet property="segmentationSelectBtn" destination="a7F-WW-7IF" id="1tX-2U-Yge"/>
                         <outlet property="segmentationText" destination="fC3-yW-mnY" id="29Q-eA-hjx"/>
                         <outlet property="segmentationType" destination="h13-D5-Ldg" id="qkZ-bR-bQY"/>
                         <outlet property="segmentationView" destination="33n-kT-C4H" id="5Za-QL-2lh"/>
@@ -1307,28 +1310,31 @@
                                                     <constraint firstAttribute="height" constant="21" id="mcX-ev-Nji"/>
                                                     <constraint firstAttribute="width" constant="104" id="mtn-zR-8Pp"/>
                                                 </constraints>
-                                                <popUpButtonCell key="cell" type="push" title="储存" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xQ4-dy-UBU" id="ljh-eR-bxY">
+                                                <popUpButtonCell key="cell" type="push" title="正常" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bIj-qg-nyX" id="ljh-eR-bxY">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
                                                     <menu key="menu" id="Q2Q-Eg-utJ">
                                                         <items>
-                                                            <menuItem title="储存" state="on" id="xQ4-dy-UBU"/>
+                                                            <menuItem title="储存" id="xQ4-dy-UBU"/>
                                                             <menuItem title="最快" id="LeC-9o-rSg"/>
                                                             <menuItem title="快速" id="rdd-6y-Dym"/>
-                                                            <menuItem title="正常" id="bIj-qg-nyX"/>
+                                                            <menuItem title="正常" state="on" id="bIj-qg-nyX"/>
                                                             <menuItem title="最大" id="WyC-xL-a6i"/>
                                                             <menuItem title="极限" id="Ssm-qE-3az"/>
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="compressMethod:" target="XfG-lQ-9wD" id="J8Q-ov-lZm"/>
+                                                </connections>
                                             </popUpButton>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="41O-DQ-E4W">
-                                                <rect key="frame" x="42" y="17" width="208" height="34"/>
+                                                <rect key="frame" x="42" y="17" width="224" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZYa-97-mEX"/>
-                                                    <constraint firstAttribute="width" constant="204" id="c3U-dn-mfp"/>
+                                                    <constraint firstAttribute="width" constant="220" id="c3U-dn-mfp"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="check" title="压缩后自定打开保存目录" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LVa-Fb-2HX">
+                                                <buttonCell key="cell" type="check" title="解压缩后自定打开保存目录" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LVa-Fb-2HX">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" size="16" name=".PingFangSC-Regular"/>
                                                 </buttonCell>

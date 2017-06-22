@@ -12,12 +12,31 @@
 
 #define PREFERENCES_FOLDER @"~/Library/Application Support/ArchiveUser"
 #define PREFERENCES_FILE @"~/Library/Application Support/ArchiveUser/ArchiveUser.plist"
-@interface ViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,ReactPathControlDelegate>
+@interface ViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,ReactPathControlDelegate> {
+    
+    NSInteger _seconds;
+    NSInteger _minutes;
+    NSInteger _hours;
+    NSString *_savePathLocationString;
+}
 
+//全局属性
 @property (nonatomic, copy) NSMutableArray *filePathArray;
 @property (nonatomic, copy) NSMutableArray *directoryItems;
-@property (nonatomic, strong)NSByteCountFormatter *sizeFormatter;
+@property (nonatomic, strong) NSByteCountFormatter *sizeFormatter;
+@property (nonatomic, copy) NSString *solidModeString;
+@property (nonatomic, copy) NSString *compressFormatString;
+@property (nonatomic, copy) NSString *compressMethodString;
+@property (nonatomic, copy) NSString *compressExtensionString;
 
+@property (nonatomic, strong) NSTimer *timeCounterVar;
+@property (nonatomic, strong) NSTimer *sieteTimer;
+//关键全局属性
+@property (nonatomic, strong)NSTask *archiveTask;
+@property (nonatomic, strong)NSPipe *pipeOut;
+@property (nonatomic, strong)NSFileHandle *handleOut;
+@property (nonatomic, strong)NSData *dataOut;
+@property (nonatomic, copy) NSString *stringOut;
 //首页属性
 @property (weak) IBOutlet NSButton *compressBtn;
 @property (weak) IBOutlet NSButton *unCompressBtn;
@@ -38,6 +57,8 @@
 @property (weak) IBOutlet NSBox *segmentationView;
 @property (weak) IBOutlet NSTextField *segmentationText;
 @property (weak) IBOutlet NSPopUpButton *segmentationType;
+@property (weak) IBOutlet NSButton *passwordSelectBtn;
+@property (weak) IBOutlet NSButton *segmentationSelectBtn;
 
 @property (weak) IBOutlet NSBox *passwordView;
 @property (weak) IBOutlet NSSecureTextField *passwordTextField;
@@ -55,6 +76,7 @@
 @property (weak) IBOutlet NSImageView *progressIcon;
 @property (weak) IBOutlet NSTextField *progressStatusText;
 @property (weak) IBOutlet NSTextField *progressTimerStatusText;
+@property (weak) IBOutlet NSButton *progressPauseButton;
 
 //Password Panel
 @property (weak) IBOutlet NSSecureTextField *passwordToExtract;
@@ -69,8 +91,10 @@
 - (IBAction)segmentation:(NSButton *)sender;
 - (IBAction)passwordSelect:(NSButton *)sender;
 
-//压缩方式
+//压缩格式（zip，7z。。。）
 - (IBAction)compressType:(NSButton *)sender;
+//压缩方式（正常，最快。。。）
+- (IBAction)compressMethod:(NSPopUpButton *)sender;
 
 
 //progressWindow Action
