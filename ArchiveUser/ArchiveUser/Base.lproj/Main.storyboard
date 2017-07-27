@@ -724,7 +724,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="list" id="UyC-eR-OAo"/>
                             </imageView>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asl-ZJ-05e" customClass="ReactPathControl">
-                                <rect key="frame" x="40" y="558" width="711" height="27"/>
+                                <rect key="frame" x="40" y="557" width="711" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="82G-hn-MlZ"/>
                                 </constraints>
@@ -734,13 +734,13 @@
                                 </pathCell>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oV-JG-L0L">
-                                <rect key="frame" x="0.0" y="25" width="750" height="526"/>
+                                <rect key="frame" x="0.0" y="25" width="750" height="525"/>
                                 <clipView key="contentView" id="7fU-Bo-Mlz">
-                                    <rect key="frame" x="1" y="0.0" width="748" height="525"/>
+                                    <rect key="frame" x="1" y="0.0" width="748" height="524"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="hVP-X2-q7l" viewBased="YES" id="JMG-cD-lr0">
-                                            <rect key="frame" x="0.0" y="0.0" width="748" height="502"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="748" height="501"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -805,7 +805,7 @@
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yk-iu-KaG">
                                                                     <rect key="frame" x="0.0" y="0.0" width="74" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="GDj-e5-crg">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="文件" id="GDj-e5-crg">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -941,8 +941,10 @@
                         <outlet property="currentPath" destination="asl-ZJ-05e" id="uAM-3A-UWI"/>
                         <outlet property="excludeMacForks" destination="Huf-fk-8WS" id="tUY-Rd-bIZ"/>
                         <outlet property="fileNumberLabel" destination="3HB-bq-VBC" id="JE3-1h-rA5"/>
+                        <outlet property="gzbzAlertLabel" destination="PvO-IX-RgB" id="qfK-EZ-DfS"/>
                         <outlet property="gzipSelectbtn" destination="wWR-70-I5v" id="Syw-HC-UUh"/>
                         <outlet property="openSavePath" destination="41O-DQ-E4W" id="n81-k9-dl3"/>
+                        <outlet property="passwordCheckPanel" destination="vDI-cg-XSY" id="cEV-b2-LbB"/>
                         <outlet property="passwordNeedAdvice" destination="sq0-y3-S3G" id="QlB-Kd-fi7"/>
                         <outlet property="passwordSelectBtn" destination="ZCX-5b-EzQ" id="wDX-0S-DCO"/>
                         <outlet property="passwordTextField" destination="DX6-Td-DIu" id="Lhb-Jh-dzf"/>
@@ -952,8 +954,8 @@
                         <outlet property="progressPauseButton" destination="oBs-bW-xNh" id="kx5-bc-bLV"/>
                         <outlet property="progressStatusText" destination="yzZ-s0-oJ3" id="Xr5-9z-nrG"/>
                         <outlet property="progressTimerStatusText" destination="62f-kp-n72" id="fR5-cH-bpV"/>
-                        <outlet property="progressViewIndicator" destination="kql-zf-ih0" id="8ZN-FE-FND"/>
-                        <outlet property="progressWindow" destination="4gf-JF-bxA" id="mWe-Q0-JRd"/>
+                        <outlet property="progressViewIndicator" destination="kql-zf-ih0" id="7rM-ki-mny"/>
+                        <outlet property="progressWindow" destination="4gf-JF-bxA" id="aT5-kh-Gxc"/>
                         <outlet property="rarSelectbtn" destination="g88-f1-Zzy" id="u50-7f-sfi"/>
                         <outlet property="segmentationSelectBtn" destination="a7F-WW-7IF" id="1tX-2U-Yge"/>
                         <outlet property="segmentationText" destination="fC3-yW-mnY" id="29Q-eA-hjx"/>
@@ -970,6 +972,70 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <window title="ArchiveUser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="4gf-JF-bxA" userLabel="Window (ArchiveUser)">
+                    <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" texturedBackground="YES"/>
+                    <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+                    <rect key="contentRect" x="76" y="788" width="399" height="68"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                    <view key="contentView" id="uDQ-6d-uCs">
+                        <rect key="frame" x="0.0" y="0.0" width="399" height="68"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator verticalHuggingPriority="750" fixedFrame="YES" minValue="20" maxValue="100" doubleValue="20" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="kql-zf-ih0">
+                                <rect key="frame" x="53" y="31" width="298" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMc-Rw-23p">
+                                <rect key="frame" x="13" y="25" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="DAt-mb-ad7"/>
+                            </imageView>
+                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17i-YW-MwD">
+                                <rect key="frame" x="374.5" y="28" width="17" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="cancel" imagePosition="overlaps" alignment="center" alternateImage="cancel_hover" inset="2" id="lz7-Nk-fOt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopProgressWindowAction:" target="XfG-lQ-9wD" id="2br-Mn-Zwa"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-s0-oJ3">
+                                <rect key="frame" x="52" y="50" width="330" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="状态文字" id="5q1-pu-uka">
+                                    <font key="font" size="11" name="LiHeiPro"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62f-kp-n72">
+                                <rect key="frame" x="52" y="11" width="330" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间状态" id="Zn6-WI-DxC">
+                                    <font key="font" size="9" name="LiHeiPro"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-bW-xNh">
+                                <rect key="frame" x="357.5" y="31" width="13" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="pause" imagePosition="overlaps" alignment="center" alternateImage="pause_hover" inset="2" id="b5c-q2-YOj">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+IA
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pauseProgressWindowAction:" target="XfG-lQ-9wD" id="2Gf-7B-cHi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </window>
                 <customView id="Slh-X7-pp9">
                     <rect key="frame" x="0.0" y="0.0" width="734" height="278"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1244,13 +1310,27 @@
                                                 </constraints>
                                                 <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </box>
+                                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvO-IX-RgB">
+                                                <rect key="frame" x="108" y="178" width="284" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="O4K-is-Uaf"/>
+                                                    <constraint firstAttribute="width" constant="280" id="jh6-j7-YJg"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="【gz 和 bzip2 只支持一次压缩一个文件！！！】" id="DvL-dy-Kfj">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="BSo-9T-9Lc" firstAttribute="centerX" secondItem="S3K-Lh-sZ3" secondAttribute="centerX" id="5kM-xV-3yI"/>
                                             <constraint firstItem="BSo-9T-9Lc" firstAttribute="top" secondItem="S3K-Lh-sZ3" secondAttribute="bottom" constant="20" id="Kxi-Zc-eeo"/>
+                                            <constraint firstItem="PvO-IX-RgB" firstAttribute="top" secondItem="0vh-tj-cWe" secondAttribute="bottom" constant="8" id="NYj-jx-xa3"/>
                                             <constraint firstItem="33n-kT-C4H" firstAttribute="leading" secondItem="a7F-WW-7IF" secondAttribute="trailing" constant="52" id="NlX-Ui-eVT"/>
                                             <constraint firstItem="S3K-Lh-sZ3" firstAttribute="leading" secondItem="hUd-qp-8S6" secondAttribute="leading" constant="17" id="SDN-si-5fq"/>
                                             <constraint firstItem="33n-kT-C4H" firstAttribute="top" secondItem="0vh-tj-cWe" secondAttribute="bottom" constant="54" id="Vhw-fe-jcd"/>
+                                            <constraint firstItem="PvO-IX-RgB" firstAttribute="leading" secondItem="hUd-qp-8S6" secondAttribute="leading" constant="110" id="WYT-9F-53H"/>
                                             <constraint firstItem="a7F-WW-7IF" firstAttribute="leading" secondItem="S3K-Lh-sZ3" secondAttribute="trailing" constant="8" id="aDr-yb-oNd"/>
                                             <constraint firstItem="a7F-WW-7IF" firstAttribute="centerY" secondItem="S3K-Lh-sZ3" secondAttribute="centerY" id="asw-7t-CC8"/>
                                             <constraint firstItem="ZCX-5b-EzQ" firstAttribute="top" secondItem="a7F-WW-7IF" secondAttribute="bottom" constant="22" id="bFD-4n-zaA"/>
@@ -1364,70 +1444,6 @@
                         <constraint firstItem="jon-VI-IaL" firstAttribute="leading" secondItem="Slh-X7-pp9" secondAttribute="leading" id="l9W-PH-aqT"/>
                     </constraints>
                 </customView>
-                <window title="ArchiveUser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="4gf-JF-bxA" userLabel="Window (ArchiveUser)">
-                    <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" texturedBackground="YES"/>
-                    <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
-                    <rect key="contentRect" x="76" y="788" width="399" height="68"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                    <view key="contentView" id="uDQ-6d-uCs">
-                        <rect key="frame" x="0.0" y="0.0" width="399" height="68"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <progressIndicator verticalHuggingPriority="750" fixedFrame="YES" minValue="20" maxValue="100" doubleValue="20" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="kql-zf-ih0">
-                                <rect key="frame" x="53" y="31" width="298" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
-                            <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMc-Rw-23p">
-                                <rect key="frame" x="13" y="25" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="DAt-mb-ad7"/>
-                            </imageView>
-                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17i-YW-MwD">
-                                <rect key="frame" x="374.5" y="28" width="17" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="cancel" imagePosition="overlaps" alignment="center" alternateImage="cancel_hover" inset="2" id="lz7-Nk-fOt">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="stopProgressWindowAction:" target="XfG-lQ-9wD" id="2br-Mn-Zwa"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-s0-oJ3">
-                                <rect key="frame" x="52" y="50" width="330" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="状态文字" id="5q1-pu-uka">
-                                    <font key="font" size="11" name="LiHeiPro"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62f-kp-n72">
-                                <rect key="frame" x="52" y="11" width="330" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间状态" id="Zn6-WI-DxC">
-                                    <font key="font" size="9" name="LiHeiPro"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-bW-xNh">
-                                <rect key="frame" x="355.5" y="28" width="17" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="pause" imagePosition="overlaps" alignment="center" alternateImage="pause_hover" inset="2" id="b5c-q2-YOj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-IA
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="pauseProgressWindowAction:" target="XfG-lQ-9wD" id="2Gf-7B-cHi"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                </window>
                 <window title="密码" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="vDI-cg-XSY" userLabel="Panel (密码)" customClass="NSPanel">
                     <windowStyleMask key="styleMask" titled="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>

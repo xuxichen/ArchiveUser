@@ -18,6 +18,7 @@
     NSInteger _minutes;
     NSInteger _hours;
     NSString *_savePathLocationString;
+    NSString *_unArchiveFileUrlString;
 }
 
 //全局属性
@@ -47,6 +48,7 @@
 //tabView属性
 //custom
 @property (strong) IBOutlet NSView *tabView;
+@property (weak) IBOutlet NSTextField *gzbzAlertLabel;
 
 @property (weak) IBOutlet NSButton *z7Selectbtn;
 @property (weak) IBOutlet NSButton *zipSelectbtn;
@@ -71,7 +73,7 @@
 @property (weak) IBOutlet NSButton *openSavePath;
 
 //progressWindow
-@property (weak) IBOutlet NSWindow *progressWindow;
+@property (strong) IBOutlet NSWindow *progressWindow;
 @property (weak) IBOutlet NSProgressIndicator *progressViewIndicator;
 @property (weak) IBOutlet NSImageView *progressIcon;
 @property (weak) IBOutlet NSTextField *progressStatusText;
@@ -79,6 +81,7 @@
 @property (weak) IBOutlet NSButton *progressPauseButton;
 
 //Password Panel
+@property (strong) IBOutlet NSPanel *passwordCheckPanel;
 @property (weak) IBOutlet NSSecureTextField *passwordToExtract;
 @property (weak) IBOutlet NSTextField *passwordNeedAdvice;
 

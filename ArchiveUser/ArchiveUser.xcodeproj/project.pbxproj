@@ -20,6 +20,12 @@
 		DF18F7F91EF26668001F931E /* keka7z in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F51EF26668001F931E /* keka7z */; };
 		DF18F7FA1EF26668001F931E /* kekaunace in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F61EF26668001F931E /* kekaunace */; };
 		DF18F7FB1EF26668001F931E /* kekaunrar in Resources */ = {isa = PBXBuildFile; fileRef = DF18F7F71EF26668001F931E /* kekaunrar */; };
+		DF2963301EFCB84F00159C96 /* ProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29632F1EFCB84F00159C96 /* ProgressWindow.m */; };
+		DF2963321EFCB88100159C96 /* ProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF2963311EFCB88100159C96 /* ProgressWindow.xib */; };
+		DF2963351EFCBA2800159C96 /* ArchiveTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2963341EFCBA2800159C96 /* ArchiveTabView.m */; };
+		DF2963371EFCBA3A00159C96 /* ArchiveTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF2963361EFCBA3A00159C96 /* ArchiveTabView.xib */; };
+		DF29633A1EFCBAD900159C96 /* PasswordPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2963391EFCBAD900159C96 /* PasswordPanel.m */; };
+		DF29633C1EFCBAEB00159C96 /* PasswordPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF29633B1EFCBAEB00159C96 /* PasswordPanel.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,15 @@
 		DF18F7F51EF26668001F931E /* keka7z */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = keka7z; sourceTree = "<group>"; };
 		DF18F7F61EF26668001F931E /* kekaunace */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o"; path = kekaunace; sourceTree = "<group>"; };
 		DF18F7F71EF26668001F931E /* kekaunrar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = kekaunrar; sourceTree = "<group>"; };
+		DF29632E1EFCB84F00159C96 /* ProgressWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressWindow.h; sourceTree = "<group>"; };
+		DF29632F1EFCB84F00159C96 /* ProgressWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressWindow.m; sourceTree = "<group>"; };
+		DF2963311EFCB88100159C96 /* ProgressWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressWindow.xib; sourceTree = "<group>"; };
+		DF2963331EFCBA2800159C96 /* ArchiveTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveTabView.h; sourceTree = "<group>"; };
+		DF2963341EFCBA2800159C96 /* ArchiveTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveTabView.m; sourceTree = "<group>"; };
+		DF2963361EFCBA3A00159C96 /* ArchiveTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTabView.xib; sourceTree = "<group>"; };
+		DF2963381EFCBAD900159C96 /* PasswordPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordPanel.h; sourceTree = "<group>"; };
+		DF2963391EFCBAD900159C96 /* PasswordPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordPanel.m; sourceTree = "<group>"; };
+		DF29633B1EFCBAEB00159C96 /* PasswordPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordPanel.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +191,15 @@
 			children = (
 				DF18F7EF1EF2620D001F931E /* ReactPathControl.h */,
 				DF18F7F01EF2620D001F931E /* ReactPathControl.m */,
+				DF2963331EFCBA2800159C96 /* ArchiveTabView.h */,
+				DF2963341EFCBA2800159C96 /* ArchiveTabView.m */,
+				DF2963361EFCBA3A00159C96 /* ArchiveTabView.xib */,
+				DF29632E1EFCB84F00159C96 /* ProgressWindow.h */,
+				DF29632F1EFCB84F00159C96 /* ProgressWindow.m */,
+				DF2963311EFCB88100159C96 /* ProgressWindow.xib */,
+				DF2963381EFCBAD900159C96 /* PasswordPanel.h */,
+				DF2963391EFCBAD900159C96 /* PasswordPanel.m */,
+				DF29633B1EFCBAEB00159C96 /* PasswordPanel.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,7 +285,7 @@
 		DF18F7AB1EF25F36001F931E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "徐子文";
 				TargetAttributes = {
 					DF18F7B21EF25F36001F931E = {
@@ -309,8 +333,11 @@
 				DF18F7FB1EF26668001F931E /* kekaunrar in Resources */,
 				DF18F7F81EF26668001F931E /* 7z.so in Resources */,
 				DF18F7C01EF25F36001F931E /* Assets.xcassets in Resources */,
+				DF2963321EFCB88100159C96 /* ProgressWindow.xib in Resources */,
 				DF18F7C31EF25F36001F931E /* Main.storyboard in Resources */,
 				DF18F7F91EF26668001F931E /* keka7z in Resources */,
+				DF2963371EFCBA3A00159C96 /* ArchiveTabView.xib in Resources */,
+				DF29633C1EFCBAEB00159C96 /* PasswordPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,9 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2963301EFCB84F00159C96 /* ProgressWindow.m in Sources */,
 				DF18F7BB1EF25F36001F931E /* main.m in Sources */,
 				DF18F7EB1EF26091001F931E /* ViewController.m in Sources */,
+				DF2963351EFCBA2800159C96 /* ArchiveTabView.m in Sources */,
 				DF18F7F11EF2620D001F931E /* ReactPathControl.m in Sources */,
+				DF29633A1EFCBAD900159C96 /* PasswordPanel.m in Sources */,
 				DF18F7B81EF25F36001F931E /* AppDelegate.m in Sources */,
 				DF18F7EE1EF26151001F931E /* Model.m in Sources */,
 			);
@@ -396,7 +426,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -404,7 +436,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -427,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -444,7 +480,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -452,7 +490,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -469,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
