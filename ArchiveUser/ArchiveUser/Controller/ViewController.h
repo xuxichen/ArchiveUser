@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ReactPathControl.h"
 #import "Model.h"
-
+#import "NSString+OAURLEncodingAdditions.h"
 #define PREFERENCES_FOLDER @"~/Library/Application Support/ArchiveUser"
 #define PREFERENCES_FILE @"~/Library/Application Support/ArchiveUser/ArchiveUser.plist"
 @interface ViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,ReactPathControlDelegate> {

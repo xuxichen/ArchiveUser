@@ -26,6 +26,7 @@
 		DF2963371EFCBA3A00159C96 /* ArchiveTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF2963361EFCBA3A00159C96 /* ArchiveTabView.xib */; };
 		DF29633A1EFCBAD900159C96 /* PasswordPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2963391EFCBAD900159C96 /* PasswordPanel.m */; };
 		DF29633C1EFCBAEB00159C96 /* PasswordPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF29633B1EFCBAEB00159C96 /* PasswordPanel.xib */; };
+		DF9508B01F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9508AF1F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		DF2963381EFCBAD900159C96 /* PasswordPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordPanel.h; sourceTree = "<group>"; };
 		DF2963391EFCBAD900159C96 /* PasswordPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordPanel.m; sourceTree = "<group>"; };
 		DF29633B1EFCBAEB00159C96 /* PasswordPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordPanel.xib; sourceTree = "<group>"; };
+		DF9508AE1F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OAURLEncodingAdditions.h"; sourceTree = "<group>"; };
+		DF9508AF1F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OAURLEncodingAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				DF18F7F31EF26668001F931E /* Bin */,
+				DF9508AE1F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.h */,
+				DF9508AF1F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				DF18F7BB1EF25F36001F931E /* main.m in Sources */,
 				DF18F7EB1EF26091001F931E /* ViewController.m in Sources */,
 				DF2963351EFCBA2800159C96 /* ArchiveTabView.m in Sources */,
+				DF9508B01F2B3D3E00C537FB /* NSString+OAURLEncodingAdditions.m in Sources */,
 				DF18F7F11EF2620D001F931E /* ReactPathControl.m in Sources */,
 				DF29633A1EFCBAD900159C96 /* PasswordPanel.m in Sources */,
 				DF18F7B81EF25F36001F931E /* AppDelegate.m in Sources */,

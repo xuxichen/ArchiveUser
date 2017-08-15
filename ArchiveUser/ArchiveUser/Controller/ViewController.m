@@ -662,14 +662,104 @@
             NSString *temporaryFolder;
             
             temporaryFolder = _savePathLocationString;
-            
             actualLocation = [[NSMutableString alloc] initWithString:temporaryFolder];
             [actualLocation appendString:@"/"];
-            [actualLocation appendString:[items objectAtIndex:0]];
             
+            [actualLocation appendString:[items objectAtIndex:0]];
             NSMutableString *newLocation = [[NSMutableString alloc] initWithString:[temporaryFolder stringByDeletingLastPathComponent]];
             [newLocation appendString:@"/"];
             [newLocation appendString:[items objectAtIndex:0]];
+            
+//            ------------------------------------------------------------------
+            NSString *astr = @"新建文件";
+            NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding (kCFStringEncodingGB_18030_2000);
+            NSString *str1 = [astr stringByAddingPercentEscapesUsingEncoding:enc];
+            NSLog(@" reStr %@",str1);
+            
+            NSString *newName;
+            NSLog(@"%@",[items objectAtIndex:0]);
+            
+            NSString *temp = [[items objectAtIndex:0] URLEncodedString];
+            NSLog(@"temp ====== %@",temp);
+            NSString *decoded = [[items objectAtIndex:0] URLDecodedString];
+            NSLog(@"decoded ====== %@",decoded);
+            unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_2312_80);
+            NSData *data = [[items objectAtIndex:0] dataUsingEncoding:encode];
+            NSData *nameData = [[items objectAtIndex:0] dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *nameString = [[NSString alloc] initWithData:nameData  encoding:encode];
+            NSLog(@"nameString ========= %@",nameString);
+            if (data != nil) {
+                newName = [[NSString alloc] initWithData:data encoding:encode];
+            }
+            
+            NSArray *arrEncoding = @[@(NSASCIIStringEncoding),
+                                     @(NSNEXTSTEPStringEncoding),
+                                     @(NSJapaneseEUCStringEncoding),
+                                     @(NSUTF8StringEncoding),
+                                     @(NSISOLatin1StringEncoding),
+                                     @(NSSymbolStringEncoding),
+                                     @(NSNonLossyASCIIStringEncoding),
+                                     @(NSShiftJISStringEncoding),
+                                     @(NSISOLatin2StringEncoding),
+                                     @(NSUnicodeStringEncoding),
+                                     @(NSWindowsCP1251StringEncoding),
+                                     @(NSWindowsCP1252StringEncoding),
+                                     @(NSWindowsCP1253StringEncoding),
+                                     @(NSWindowsCP1254StringEncoding),
+                                     @(NSWindowsCP1250StringEncoding),
+                                     @(NSISO2022JPStringEncoding),
+                                     @(NSMacOSRomanStringEncoding),
+                                     @(NSUTF16StringEncoding),
+                                     @(NSUTF16BigEndianStringEncoding),
+                                     @(NSUTF16LittleEndianStringEncoding),
+                                     @(NSUTF32StringEncoding),
+                                     @(NSUTF32BigEndianStringEncoding),
+                                     @(NSUTF32LittleEndianStringEncoding)
+                                     ];
+            
+            NSArray *arrEncodingName = @[@"NSASCIIStringEncoding",
+                                         @"NSNEXTSTEPStringEncoding",
+                                         @"NSJapaneseEUCStringEncoding",
+                                         @"NSUTF8StringEncoding",
+                                         @"NSISOLatin1StringEncoding",
+                                         @"NSSymbolStringEncoding",
+                                         @"NSNonLossyASCIIStringEncoding",
+                                         @"NSShiftJISStringEncoding",
+                                         @"NSISOLatin2StringEncoding",
+                                         @"NSUnicodeStringEncoding",
+                                         @"NSWindowsCP1251StringEncoding",
+                                         @"NSWindowsCP1252StringEncoding",
+                                         @"NSWindowsCP1253StringEncoding",
+                                         @"NSWindowsCP1254StringEncoding",
+                                         @"NSWindowsCP1250StringEncoding",
+                                         @"NSISO2022JPStringEncoding",
+                                         @"NSMacOSRomanStringEncoding",
+                                         @"NSUTF16StringEncoding",
+                                         @"NSUTF16BigEndianStringEncoding",
+                                         @"NSUTF16LittleEndianStringEncoding",
+                                         @"NSUTF32StringEncoding",
+                                         @"NSUTF32BigEndianStringEncoding",
+                                         @"NSUTF32LittleEndianStringEncoding"
+                                         ];
+            
+            for (int i = 0 ; i < [arrEncoding count]; i++) {
+                unsigned long encodingCode = [arrEncoding[i] unsignedLongValue];
+                NSLog(@"arrEncodingName>>(%@)", arrEncodingName[i]);
+                NSError *error = nil;
+//                NSString *filePath = actualLocation; // <---这里是要查看的文件路径
+                NSString *aString = [NSString stringWithContentsOfFile:[items objectAtIndex:0] encoding:encodingCode  error:&error];
+                NSLog(@"Error:>>%@", [error localizedDescription]);
+                NSData *data = [aString dataUsingEncoding:encodingCode];
+                NSString *stringName = [[NSString alloc] initWithData:data encoding:encodingCode];
+                NSLog(@"stringName>>>%@", stringName);
+                
+                
+            }
+        
+        
+       
+//            ------------------------------------------------------------------
+            
             
             // Look for existing folder, and rename if folder alredy exist
             int n=2;
@@ -936,10 +1026,20 @@
         NSLog(@"Using p7zip");
         [self.archiveTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"keka7z" ofType:@""]];
     }
-
-    [self.archiveTask setArguments:[NSArray arrayWithObjects:@"x",@"",_savePathLocationString,@"-y",spasswordx,nil]];
+    NSString *savePath;
+    if ([[[self.archiveTask launchPath] lastPathComponent] isEqual:@"kekaunrar"]) {
+        savePath = [_savePathLocationString stringByAppendingString:@"/"];
+        [self.archiveTask setStandardError:self.pipeOut];
+    }else if ([[[self.archiveTask launchPath] lastPathComponent] isEqual:@"kekaunace"] || [[[self.archiveTask launchPath] lastPathComponent] isEqual:@"gnutar"]) {
+        savePath = [_savePathLocationString stringByAppendingString:@"/"];
+        [self.archiveTask setStandardOutput:self.pipeOut];
+    } else {
+        savePath = [@"-o" stringByAppendingString:_savePathLocationString];
+        [self.archiveTask setStandardOutput:self.pipeOut];
+    }
+    [self.archiveTask setArguments:[NSArray arrayWithObjects:@"x",_unArchiveFileUrlString,savePath,@"-y",spasswordx,nil]];
     [self.archiveTask launch];
-    self.sieteTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(sietezipProgress:) userInfo:nil repeats:YES];
+    self.sieteTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(unarchieveProgress:) userInfo:nil repeats:YES];
     self.timeCounterVar = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCounter:) userInfo:nil repeats:YES];
 }
 @end
