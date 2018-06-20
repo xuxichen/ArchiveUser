@@ -752,8 +752,6 @@
                 NSData *data = [aString dataUsingEncoding:encodingCode];
                 NSString *stringName = [[NSString alloc] initWithData:data encoding:encodingCode];
                 NSLog(@"stringName>>>%@", stringName);
-                
-                
             }
         
         
@@ -789,12 +787,11 @@
             NSMutableString *newLocation = [[NSMutableString alloc] initWithString:[[_savePathLocationString stringByDeletingLastPathComponent] stringByAppendingPathComponent:[[_unArchiveFileUrlString lastPathComponent] stringByDeletingPathExtension]]];
             int n=2;
             newTempLocation = newLocation;
-            while([[NSFileManager defaultManager] fileExistsAtPath:newTempLocation])
-                {
+            while([[NSFileManager defaultManager] fileExistsAtPath:newTempLocation]) {
                 newTempLocation = nil;
                 newTempLocation = [[NSMutableString alloc] initWithString:newLocation];
                 [newTempLocation appendString:[NSString stringWithFormat:@" %d",n++]];
-                }
+            }
             newLocation = newTempLocation;
             [fileManager moveItemAtPath:temporaryFolder toPath:newLocation error:nil]; // Changing folder name
             _savePathLocationString = newLocation; // Now new location is the correct path
